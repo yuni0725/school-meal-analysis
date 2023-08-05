@@ -5,13 +5,16 @@ def download():
 
     from time import sleep
 
-    for file in os.listdir(f"{os.getcwd()}\\menu"):
-        os.remove(f"{os.getcwd()}\\menu\\{file}")
+    try:
+        for file in os.listdir(f"{os.getcwd()}\\menu"):
+            os.remove(f"{os.getcwd()}\\menu\\{file}")
+    except FileNotFoundError:
+        os.mkdir(f'{os.getcwd()}\\menu')
 
     options = webdriver.ChromeOptions()
     options.add_experimental_option(
         "prefs",
-        { "download.default_directory": 'C:\\Users\\user\\Desktop\\Code\\menu',
+        { "download.default_directory": f'{os.getcwd()}\\menu',
         "download.prompt_for_download": False,   
         "download.directory_upgrade": True,
         "safebrowsing.enabled": True
@@ -23,7 +26,7 @@ def download():
     driver.implicitly_wait(15)
 
     
-    for i in range(1, 3):
+    for i in range(1, 2):
         URL = f"https://school.jbedu.kr/sangsan/M01060401/list?s_idx={i}"
         driver.get(URL)
 
@@ -43,7 +46,7 @@ def download():
 def rename():
     import win32com.client as win32
     import os
-    file_path = 'C:\\Users\\user\\Desktop\\Code\\menu\\'
+    file_path = f'{os.getcwd()}\\menu\\'
     file_names = os.listdir(file_path)
     os.chdir(file_path)
 
@@ -68,42 +71,58 @@ def rename():
 
 def get_data():
     import os
-    file_path = 'C:\\Users\\user\\Desktop\\Code\\menu'
+    import os.path
+    file_path = f'{os.getcwd()}\\menu'
     file_names = os.listdir(file_path)
     os.chdir(file_path)
 
-    menu = []
+    if os.path.isfile(f"{file_path}" + ".csv"):
+        menu = []
+        reader = open(f'{file_path}' + '.csv', "r")
+        for row in reader:
+            menu.append(row.replace("\n", ""))
 
-    from openpyxl import load_workbook
+        return menu
+    else:
+        download()
+        rename()
 
-    for name in file_names:
-        print(name)
-        wb = load_workbook(name)
-        ws = wb['기숙사식당']
+        menu = []
 
-        for row in ws.rows:
-            for cell in row:
-                if cell.value:
-                    try:
-                        if 'ㆍ' in cell.value:
-                            for value in cell.value.split('\n'):
-                                try :
-                                    value = value.split('(')[0]
-                                    value = value.split("ㆍ")[1].split('/')
-                                    menu.append(value[0])
-                                    if value[1]:
-                                        menu.append(value[1])
-                                except IndexError:
-                                    pass
-                    except TypeError:
-                        pass
-    print(f"총 급식수: {len(menu)}")
-    print(f"중복 제외 급식수 {len(list(set(menu)))}")
+        from openpyxl import load_workbook
 
-    return menu
+        for name in file_names:
+            wb = load_workbook(name)
+            ws = wb['기숙사식당']
 
-download()
-rename()
-a = get_data()
+            for row in ws.rows:
+                for cell in row:
+                    if cell.value:
+                        try:
+                            if 'ㆍ' in cell.value:
+                                for value in cell.value.split('\n'):
+                                    try :
+                                        value = value.split('(')[0]
+                                        value = value.split("ㆍ")[1].split('/')
+                                        menu.append(value[0])
+                                        if value[1]:
+                                            menu.append(value[1])
+                                    except IndexError:
+                                        pass
+                        except TypeError:
+                            pass
+        
+        os.chdir("../")
 
+        write_csv(list(set(menu)))
+
+def write_csv(menu):
+    import csv
+
+    f = open("menu.csv", 'w', newline="")
+    writer = csv.writer(f)
+    for food in menu:
+        writer.writerow([food])
+
+    f.close()
 
