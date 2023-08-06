@@ -111,15 +111,16 @@ def get_data():
                                         pass
                         except TypeError:
                             pass
-        
-        os.chdir("../")
 
-        write_csv(list(set(menu)))
+        write_csv(list(set(menu)), "menu")
 
-def write_csv(menu):
+def write_csv(menu, name):
+    import os
     import csv
 
-    f = open("menu.csv", 'w', newline="")
+    os.chdir("../")
+
+    f = open(f"./{name}.csv", 'w', newline="")
     writer = csv.writer(f)
     for food in menu:
         writer.writerow([food])
