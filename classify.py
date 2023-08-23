@@ -55,7 +55,7 @@ drink = [
 "요구르트"
 ]
 salad = []
-serial = [
+cereals = [
     "오레오오즈",
     "그래놀라카카오",
     "초코첵스",
@@ -84,7 +84,7 @@ print(len(salad))
 
 data = [x for x in data if x not in salad]
 
-data = [x for x in data if x not in serial]
+data = [x for x in data if x not in cereals]
 
 
 
