@@ -1,126 +1,62 @@
-import requests
-from bs4 import BeautifulSoup
+def get_nutri_data(food_name):
+    #음식 데이터 불러오기
+    import pandas as pd
 
-menus = []
+    data = pd.read_csv("DB.csv", encoding="UTF-8")
 
-key = "JKAjWtJPpVy75MU5wvCtXa76wUc1yuqYSyRTrDJDUpZihoQ1fl5NQGJUATNEjYwVAapsTOPRsX0cVWcEjSbeqg=="
+    data_food_name = list(data["음 식 명"])
 
-URL_CODE = "http://apis.data.go.kr/1390802/AgriFood/MzenFoodCode/getKoreanFoodList"
+    #데이터 토크나이저
+    import os
+    os.environ['JAVA_HOME'] = r'C:\Program Files\Java\jdk-11\bin\server'
 
-URL_NUT = "http://apis.data.go.kr/1390802/AgriFood/MzenFoodNutri/getKoreanFoodIdntList"
+    from konlpy.tag import Okt
+    okt = Okt()
 
-def get_info(menu):
-    params = {
-    "serviceKey": key,
-    "Page_Size" : 50,
-    "food_Name" : f"{menu}"
-    }
+    text = food_name
+    text_split = okt.morphs(text)
 
-    res = requests.get(URL_CODE, params=params, verify=False)
+    high_score = 0
+    high_data = 0
 
-    xml_obj = BeautifulSoup(res.text, 'lxml-xml')
-    rows = xml_obj.findAll("item")
+    #데이터 유사도 확인하지
+    from modules import jaccard_similarity
 
-    if rows:
-        for i in range(0, len(rows)):
-            text = rows[i].text.strip().split("\n")
-            name = text[3]
-            code = text[0]
-            get_nutri(name, code)
+    for d in data_food_name:
+        d_split = okt.morphs(d)
+        score = jaccard_similarity(d_split, text_split)
+        if score > high_score:
+            high_score = score
+            high_data = d
+        else:
+            continue
 
+    if high_data == 0:
+        return {
+            "Food" : food_name,
+            "Nutri" : {}
+        }
     else:
-        menu = get_formal_menu(menu)
-        get_info(menu)
-
-def get_nutri(menu, code):
-    print(code)
-    params = {
-        'serviceKey' : key,
-        'food_Code' : code,
-    }
-
-    res = requests.get(URL_NUT, params=params, verify=False)
-
-    xml_obj = BeautifulSoup(res.text, 'lxml-xml')
-    rows = xml_obj.findAll("idnt_List")
-
-    weight = 0 #식품 무게
-    prot = 0 #단백질
-    carbo = 0 #탄수화물
-    fafref = 0 #지방산
-    ptss = 0 #칼륨
-    clci = 0 #칼슘
-    mg = 0 #마그네슘
-    na = 0 #나트륨
-    irn = 0 #철
-    zn = 0 #아연
-    vitE = 0 #비타민 E
-    vitD = 0 #비타민 D
-    sugar = 0 #당
-    fiber = 0 #식이섬유
-
-    for row in rows:
-        weight += float(row.find("food_Weight").text)
-        prot += float(row.find("prot_Qy").text)
-        carbo += float(row.find("carbohydrate_Qy").text)
-        fafref += float(row.find("fafref_Qy").text)
-        ptss += float(row.find("ptss_Qy").text)
-        clci += float(row.find("clci_Qy").text)
-        mg += float(row.find("mg_Qy").text)
-        na += float(row.find("na_Qy").text)
-        irn += float(row.find("irn_Qy").text)
-        zn += float(row.find("zn_Qy").text)
-        vitE += float(row.find("vite_Qy").text)
-        vitD += float(row.find("vitd_Qy").text)
-        sugar += float(row.find("sugar_Qy").text)
-        fiber += float(row.find("fibtg_Qy").text)
-
-    nutri = {
-        "Weight" : round(weight, 2),
-        "Protin" : round(prot, 2),
-        "Carbohydrate" : round(carbo, 2),
-        "Fafref" : round(fafref, 2),
-        "Ptss" : round(ptss, 2),
-        "Clci" : round(clci, 2),
-        "Mg" : round(mg, 2),
-        "Na" : round(na, 2),
-        "Iron" : round(irn, 2),
-        "Zn" : round(zn, 2),
-        "VitE" : round(vitE, 2),
-        "VitD" : round(vitD, 2),
-        "Sugar" : round(sugar, 2),
-        "Fiber" : round(fiber, 2),
-    }
-
-    menus.append({
-        menu : nutri,
-    })
-
-def get_formal_menu(menu):
-    import openai
-
-    openai.api_key = "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"
-
-    completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[{
-            "role":"user", 
-            "content":f"{menu}의 가장 중요한 재료 하나만 말해주고 따움표로 강조해줘",
-            
-        }],
-        temperature = 0,
-        max_tokens = 100,
-    )
-
-    return completion.choices[0].message.content.split("'")[1]
-
-
-for menu in ["오리주물럭", "감자조림"]:
-    get_info(menu)
-
-print(menus)
-
-
-
-
-
+        food_data = data[data['음 식 명'] == high_data]
+        col = list(food_data.columns)
+        return {
+            "Food" : food_name,
+            "Nutri" :{
+                "weight" : float(str(food_data[col[1]].values[0]).replace("-", "0")),
+                "kcal" : float(str(food_data[col[2]].values[0]).replace("-", "0")),
+                "carbo ": float(str(food_data[col[3]].values[0]).replace("-", "0")),
+                "sugar" : float(str(food_data[col[4]].values[0]).replace("-", "0")),
+                "fat" : float(str(food_data[col[5]].values[0]).replace("-", "0")),
+                "protein" : float(str(food_data[col[6]].values[0]).replace("-", "0")),
+                "Ca" : float(str(food_data[col[7]].values[0]).replace("-", "0")),
+                "P" : float(str(food_data[col[8]].values[0]).replace("-", "0")),
+                "Na" : float(str(food_data[col[9]].values[0]).replace("-", "0")),
+                "K" : float(str(food_data[col[10]].values[0]).replace("-", "0")),
+                "Mg" : float(str(food_data[col[11]].values[0]).replace("-", "0")),
+                "Fe" : float(str(food_data[col[12]].values[0]).replace("-", "0")),
+                "Zn" : float(str(food_data[col[13]].values[0]).replace("-", "0")),
+                "cholesterol" : float(str(food_data[col[14]].values[0]).replace("-", "0")),
+                "trans_fat" : float(str(food_data[col[15]].values[0]).replace("-", "0")),
+                }
+            }
+    

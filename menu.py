@@ -1,129 +1,67 @@
-def download():
-    from selenium import webdriver
-    from selenium.webdriver.common.by import By
-    import os
-
-    from time import sleep
-
-    try:
-        for file in os.listdir(f"{os.getcwd()}\\menu"):
-            os.remove(f"{os.getcwd()}\\menu\\{file}")
-    except FileNotFoundError:
-        os.mkdir(f'{os.getcwd()}\\menu')
-
-    options = webdriver.ChromeOptions()
-    options.add_experimental_option(
-        "prefs",
-        { "download.default_directory": f'{os.getcwd()}\\menu',
-        "download.prompt_for_download": False,   
-        "download.directory_upgrade": True,
-        "safebrowsing.enabled": True
-        }
-    )
-    options.add_argument('headless')
-
-    driver = webdriver.Chrome(options=options)
-    driver.implicitly_wait(15)
-
-    
-    for i in range(1, 2):
-        URL = f"https://school.jbedu.kr/sangsan/M01060401/list?s_idx={i}"
-        driver.get(URL)
-
-        for i in range(1, 11):
-            try:
-                driver.find_element(By.CSS_SELECTOR, f'#usm-content-body-id > table > tbody > tr:nth-child({i}) > td.tch-tit > a').click()
-                driver.find_element(By.CSS_SELECTOR, '#m_mainView > tbody > tr:nth-child(3) > td > div > div.file-btn2 > span:nth-child(1) > a').click()
-                driver.back()
-                print("download complete")
-            except:
-                print('no file')
-
-        sleep(1)
-    driver.close()
-    driver.quit()
-
-def rename():
-    import win32com.client as win32
-    import os
-    file_path = f'{os.getcwd()}\\menu\\'
-    file_names = os.listdir(file_path)
-    os.chdir(file_path)
-
-    i = 1
-    for name in file_names:
-        path = f"{file_path}{name}"
-        excel = win32.gencache.EnsureDispatch('Excel.Application')
-        wb = excel.Workbooks.Open(path)
-        if not(".xlsx" in name):
-            wb.SaveAs(path+"x", FileFormat = 51)
-            wb.SaveAs(f"{file_path}{i}.xlsx", FileFormat = 51)
-            wb.Close() 
-            excel.Application.Quit()
-            os.remove(path)
-            os.remove(path + 'x')
-        else:
-            wb.SaveAs(f"{file_path}{i}.xlsx", FileFormat = 51)
-            wb.Close() 
-            excel.Application.Quit()
-            os.remove(path)
-        i += 1
-
+# This File gets menu from website and export by csv
 def get_data():
-    import os
-    import os.path
-    file_path = f'{os.getcwd()}\\menu'
-    file_names = os.listdir(file_path)
-    os.chdir(file_path)
+    import requests
+    from bs4 import BeautifulSoup
+    from modules import write_csv
 
-    if os.path.isfile(f"{file_path}" + ".csv"):
-        menu = []
-        reader = open(f'{file_path}' + '.csv', "r")
-        for row in reader:
-            menu.append(row.replace("\n", ""))
+    YMD = "20210218"
+    menu = []
 
-        return menu
-    else:
-        download()
-        rename()
+    running = True
+    while running:
+        url = f"https://school.jbedu.kr/sangsan/MABAGAEAD/list?ymd={YMD}"
+        res = requests.get(url)
 
-        menu = []
+        if res.status_code != 200:
+            print(res.status_code)
+        else:
+            html = res.text
+            soup = BeautifulSoup(html, 'html.parser')
 
-        from openpyxl import load_workbook
+            new_menu = []
 
-        for name in file_names:
-            wb = load_workbook(name)
-            ws = wb['기숙사식당']
+            wraps = soup.find_all("li", "tch-lnc-wrap")
+            if wraps:
+                #메뉴 찾아서 리스트에 집어 넣기
+                for wrap in wraps:
+                    for menus in wrap.find("dd", "tch-lnc").find_all("li"):
+                        menus = menus.text.replace("\r", "")
+                        if "/" in menus:
+                            menus = menus.split("/")
+                            for i in menus:
+                                new_menu.append(i)
+                        else:
+                            new_menu.append(menus)
+                
+                for food in make_data_regular(new_menu):
+                    menu.append(food)
+    
+            YMD = add_date(YMD)
+            menu = list(set(menu))
 
-            for row in ws.rows:
-                for cell in row:
-                    if cell.value:
-                        try:
-                            if 'ㆍ' in cell.value:
-                                for value in cell.value.split('\n'):
-                                    try :
-                                        value = value.split('(')[0]
-                                        value = value.split("ㆍ")[1].split('/')
-                                        menu.append(value[0])
-                                        if value[1]:
-                                            menu.append(value[1])
-                                    except IndexError:
-                                        pass
-                        except TypeError:
-                            pass
+        if int(YMD) > 20230927:
+            running = False
 
-        write_csv(list(set(menu)), "menu")
+        print(len(menu))
+        print(f"{YMD}\n")
 
-def write_csv(menu, name):
-    import os
-    import csv
+    write_csv(menu, "menu_new")
 
-    os.chdir("../")
+def add_date(YMD):
+    import datetime
 
-    f = open(f"./{name}.csv", 'w', newline="")
-    writer = csv.writer(f)
-    for food in menu:
-        writer.writerow([food])
+    date = datetime.datetime.strptime(YMD, '%Y%m%d')
+    new = date + datetime.timedelta(days=1)
+    YMD = new.strftime('%Y%m%d')
 
-    f.close()
+    return YMD
+
+def make_data_regular(list):
+    import re
+    pattern =  r'[^a-zA-Z가-힣]'
+    menu = []
+    for i in list:
+        s = re.sub(pattern=pattern, repl='', string=i)
+        menu.append(s)
+    return menu
 

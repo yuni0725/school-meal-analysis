@@ -1,6 +1,9 @@
-from menu import get_data, write_csv
+#데이터 불러오기 (menu_clean.csv)
+from modules import get_csv_to_list
 
-data = get_data()
+data = get_csv_to_list("menu_new")
+
+print(len(data))
 
 drink = [
 "망고에이드",
@@ -73,6 +76,32 @@ cereals = [
     "오레오즈",
     "우리쌀링"
 ]
+fruits = [
+    '멜론',
+    '사과',
+    '베',
+    '리치',
+    '청포도',
+    '파인애플',
+    '감귤',
+    '자몽',
+    '귤',
+    '열대과일',
+    '바나나',
+    '키위',
+    '자두',
+    '메론',
+    '딸기',
+    '포도',
+    '참외',
+    '샤인머스캣',
+    '망고',
+    '수박',
+    '골드키위',
+    '석류',
+    '토마토',
+    '오렌지'
+]
 
 data = [x for x in data if x not in drink]
 
@@ -80,13 +109,18 @@ for d in data:
     if "샐러드" in d:
         salad.append(d)
 
-print(len(salad))
-
 data = [x for x in data if x not in salad]
 
 data = [x for x in data if x not in cereals]
 
+data = [x for x in data if x not in fruits]
 
+data_new = []
+for d in data:
+    data_new.append(str(d).replace("&", " "))
 
+print(len(data_new))
 
+from modules import write_csv
+write_csv(data_new, "menu_new2")
 
