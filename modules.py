@@ -1,7 +1,7 @@
 def write_csv(menu, name):
     import csv
 
-    f = open(f"./{name}.csv", 'w', newline="", encoding="UTF-8")
+    f = open(f"./csv_file/{name}.csv", 'w', newline="", encoding="UTF-8")
     writer = csv.writer(f)
     for food in menu:
         writer.writerow([food])
@@ -14,7 +14,7 @@ def get_csv_to_list(name):
     pd.set_option('display.max_rows', None)
     pd.set_option('display.max_columns', None)
 
-    data = pd.read_csv(f"{name}.csv", encoding='UTF-8', usecols=['food'])
+    data = pd.read_csv(f"./csv_file/{name}.csv", encoding='UTF-8', usecols=['food'])
 
     data = data.food.tolist()
 
