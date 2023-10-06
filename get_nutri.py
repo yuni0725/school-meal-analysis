@@ -41,49 +41,49 @@ def get_food_data(food : str):
         col = list(food_data.columns)
         if "밥" in food:
             old_weight = float(str(food_data[col[1]].values[0]).replace("-", "0"))
-            rice_weight = 200
+            rice_weight = 183
             return {
                 "Food" : food,
                 "Nutri" :{
                     "weight" : rice_weight,
-                    "kcal" : float(str(food_data[col[2]].values[0]).replace("-", "0")) / old_weight * rice_weight,
-                    "carbo ": float(str(food_data[col[3]].values[0]).replace("-", "0")) / old_weight * rice_weight,
-                    "sugar" : float(str(food_data[col[4]].values[0]).replace("-", "0")) / old_weight * rice_weight,
-                    "fat" : float(str(food_data[col[5]].values[0]).replace("-", "0")) / old_weight * rice_weight,
-                    "protein" : float(str(food_data[col[6]].values[0]).replace("-", "0")) / old_weight * rice_weight,
-                    "Ca" : float(str(food_data[col[7]].values[0]).replace("-", "0")) / old_weight * rice_weight,
-                    "P" : float(str(food_data[col[8]].values[0]).replace("-", "0")) / old_weight * rice_weight,
-                    "Na" : float(str(food_data[col[9]].values[0]).replace("-", "0")) / old_weight * rice_weight,
-                    "K" : float(str(food_data[col[10]].values[0]).replace("-", "0")) / old_weight * rice_weight,
-                    "Mg" : float(str(food_data[col[11]].values[0]).replace("-", "0")) / old_weight * rice_weight,
-                    "Fe" : float(str(food_data[col[12]].values[0]).replace("-", "0")) / old_weight * rice_weight,
-                    "Zn" : float(str(food_data[col[13]].values[0]).replace("-", "0")) / old_weight * rice_weight,
-                    "cholesterol" : float(str(food_data[col[14]].values[0]).replace("-", "0")) / old_weight * rice_weight,
-                    "trans_fat" : float(str(food_data[col[15]].values[0]).replace("-", "0")) / old_weight * rice_weight,
+                    "kcal" : round(float(str(food_data[col[2]].values[0])) / old_weight * rice_weight, 2),
+                    "carbo": round(float(str(food_data[col[3]].values[0])) / old_weight * rice_weight, 2),
+                    "sugar" : round(float(str(food_data[col[4]].values[0])) / old_weight * rice_weight, 2),
+                    "fat" : round(float(str(food_data[col[5]].values[0])) / old_weight * rice_weight, 2),
+                    "protein" : round(float(str(food_data[col[6]].values[0])) / old_weight * rice_weight, 2),
+                    "Ca" : round(float(str(food_data[col[7]].values[0])) / old_weight * rice_weight, 2),
+                    "P" : round(float(str(food_data[col[8]].values[0])) / old_weight * rice_weight, 2),
+                    "Na" : round(float(str(food_data[col[9]].values[0])) / old_weight * rice_weight, 2),
+                    "K" : round(float(str(food_data[col[10]].values[0])) / old_weight * rice_weight, 2),
+                    "Mg" : round(float(str(food_data[col[11]].values[0])) / old_weight * rice_weight, 2),
+                    "Fe" : round(float(str(food_data[col[12]].values[0])) / old_weight * rice_weight, 2),
+                    "Zn" : round(float(str(food_data[col[13]].values[0])) / old_weight * rice_weight, 2),
+                    "cholesterol" : round(float(str(food_data[col[14]].values[0])) / old_weight * rice_weight, 2),
+                    "trans_fat" : round(float(str(food_data[col[15]].values[0])) / old_weight * rice_weight, 2),
                     }
                 }
 
         else:
-            old_weight = float(str(food_data[col[1]].values[0]).replace("-", "0"))
-            side_weight = 100
+            old_weight = float(str(food_data[col[1]].values[0]))
+            side_weight = 70
             return {
                 "Food" : food,
                 "Nutri" :{
-                    "weight" : old_weight,
-                    "kcal" : float(str(food_data[col[2]].values[0]).replace("-", "0")) / old_weight * side_weight,
-                    "carbo ": float(str(food_data[col[3]].values[0]).replace("-", "0")) / old_weight * side_weight,
-                    "sugar" : float(str(food_data[col[4]].values[0]).replace("-", "0")) / old_weight * side_weight,
-                    "fat" : float(str(food_data[col[5]].values[0]).replace("-", "0")) / old_weight * side_weight,
-                    "protein" : float(str(food_data[col[6]].values[0]).replace("-", "0")) / old_weight * side_weight,
-                    "Ca" : float(str(food_data[col[7]].values[0]).replace("-", "0")) / old_weight * side_weight,
-                    "P" : float(str(food_data[col[8]].values[0]).replace("-", "0")) / old_weight * side_weight,
-                    "Na" : float(str(food_data[col[9]].values[0]).replace("-", "0")) / old_weight * side_weight,
-                    "K" : float(str(food_data[col[10]].values[0]).replace("-", "0")) / old_weight * side_weight,
-                    "Mg" : float(str(food_data[col[11]].values[0]).replace("-", "0")) / old_weight * side_weight,
-                    "Fe" : float(str(food_data[col[12]].values[0]).replace("-", "0")) / old_weight * side_weight,
-                    "Zn" : float(str(food_data[col[13]].values[0]).replace("-", "0")) / old_weight * side_weight,
-                    "cholesterol" : float(str(food_data[col[14]].values[0]).replace("-", "0")) / old_weight * side_weight,
-                    "trans_fat" : float(str(food_data[col[15]].values[0]).replace("-", "0")) / old_weight * side_weight,
+                    "weight" : side_weight,
+                    "kcal" : round(float(str(food_data[col[2]].values[0])) / old_weight * side_weight, 2),
+                    "carbo": round(float(str(food_data[col[3]].values[0])) / old_weight * side_weight, 2),
+                    "sugar" : round(float(str(food_data[col[4]].values[0])) / old_weight * side_weight, 2),
+                    "fat" : round(float(str(food_data[col[5]].values[0])) / old_weight * side_weight, 2),
+                    "protein" : round(float(str(food_data[col[6]].values[0])) / old_weight * side_weight, 2),
+                    "Ca" : round(float(str(food_data[col[7]].values[0])) / old_weight * side_weight, 2),
+                    "P" : round(float(str(food_data[col[8]].values[0])) / old_weight * side_weight, 2),
+                    "Na" : round(float(str(food_data[col[9]].values[0])) / old_weight * side_weight, 2),
+                    "K" : round(float(str(food_data[col[10]].values[0])) / old_weight * side_weight, 2),
+                    "Mg" : round(float(str(food_data[col[11]].values[0])) / old_weight * side_weight, 2),
+                    "Fe" : round(float(str(food_data[col[12]].values[0])) / old_weight * side_weight, 2),
+                    "Zn" : round(float(str(food_data[col[13]].values[0])) / old_weight * side_weight, 2),
+                    "cholesterol" : round(float(str(food_data[col[14]].values[0])) / old_weight * side_weight, 2),
+                    "trans_fat" : round(float(str(food_data[col[15]].values[0])) / old_weight * side_weight, 2),
                     }
                 }
 
@@ -102,7 +102,7 @@ def get_not_food_data(food : str):
     "Nutri" :{
         "weight" : nutri[0],
         "kcal" : nutri[1],
-        "carbo ": nutri[2],
+        "carbo": nutri[2],
         "sugar" : nutri[3],
         "fat" : nutri[4],
         "protein" : nutri[5],

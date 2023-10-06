@@ -1,13 +1,12 @@
 from get_nutri import check_food
 from menu_daily import get_data
+from ask_menu import ask_menu
 
 import json
 
 menu = []
 
 data, YMD = get_data()
-
-
 
 for food in data['food']:
     food_list = []
@@ -22,3 +21,5 @@ for food in data['food']:
 
 with open(f"./json_file/{YMD}.json", 'w', encoding='utf-8') as file:
     json.dump(menu, file, indent="\t", ensure_ascii=False)
+
+print(ask_menu())
