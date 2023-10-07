@@ -9,7 +9,7 @@ def ask_menu(YMD : str):
     sugar = 0
     fat = 0
     protein = 0
-    Ca = 0
+    Ca = 0  
     P = 0
     Na = 0
     K = 0
@@ -78,4 +78,4 @@ def ask_menu(YMD : str):
         "cholesterol" : round(cholesterol - max_cholesterol, 2),
         "trans_fat" : round(trans_fat - max_trans_fat, 2),
     }
-    
+
