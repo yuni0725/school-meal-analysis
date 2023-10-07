@@ -47,7 +47,7 @@ def get_data():
 
     write_csv(menu, "menu_new")
 
-def add_date(YMD):
+def add_date(YMD : str):
     import datetime
 
     date = datetime.datetime.strptime(YMD, '%Y%m%d')
@@ -56,7 +56,7 @@ def add_date(YMD):
 
     return YMD
 
-def make_data_regular(list):
+def make_data_regular(list : list):
     import re
     pattern =  r'[^a-zA-Z가-힣]'
     menu = []

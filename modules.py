@@ -1,4 +1,5 @@
-def write_csv(menu, name):
+def write_csv(menu : list, name : str):
+    #csv 파일을 쓰기
     import csv
 
     f = open(f"./csv_file/{name}.csv", 'w', newline="", encoding="UTF-8")
@@ -8,7 +9,8 @@ def write_csv(menu, name):
 
     f.close()
 
-def get_csv_to_list(name):
+def get_csv_to_list(name : str):
+    #csv파일 데이터를 리스트로 변환하기
     import pandas as pd
 
     pd.set_option('display.max_rows', None)
@@ -25,7 +27,7 @@ def get_csv_to_list(name):
     
     return data_new
 
-def write_split_data(data):
+def write_split_data(data : list):
     import os
     os.environ['JAVA_HOME'] = r'C:\Program Files\Java\jdk-11\bin\server'
 
@@ -39,7 +41,8 @@ def write_split_data(data):
 
     write_csv(data_new, "menu_split")
 
-def jaccard_similarity(A, B):
+def jaccard_similarity(A : list, B : list):
+    #자카드 유사도 구하기(교집합 / 합집합)
     A = set(A)
     B = set(B)
 

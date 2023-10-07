@@ -1,4 +1,4 @@
-def ask_menu(YMD = "20231006"):
+def ask_menu(YMD : str):
     import json
 
     with open(f"./json_file/{YMD}.json", 'r', encoding='utf-8') as file:

@@ -1,5 +1,4 @@
-# This File gets menu from website and export by csv
-def get_data():
+def get_daily_menu():
     import requests
     from bs4 import BeautifulSoup
 
@@ -16,6 +15,7 @@ def get_data():
     if res.status_code != 200:
         print(res.status_code)
     else:
+        #오늘 날짜의 급식 메뉴 불러오기
         html = res.text
         soup = BeautifulSoup(html, 'html.parser')
 
@@ -25,7 +25,6 @@ def get_data():
 
         wraps = soup.find_all("li", "tch-lnc-wrap")
         if wraps:
-            #메뉴 찾아서 리스트에 집어 넣기
             for wrap in wraps:
                 new_menu = []
                 real_menu = []
@@ -40,7 +39,7 @@ def get_data():
                     else:
                         new_menu.append(menus)
             
-                for food in make_data_regular(new_menu):
+                for food in make_data_clean(new_menu):
                     real_menu.append(food)
             
                 menu.append({
@@ -52,6 +51,7 @@ def get_data():
     return {"food" : menu }, YMD
 
 def add_date(YMD):
+    #날짜를 더하는 함수
     import datetime
 
     date = datetime.datetime.strptime(YMD, '%Y%m%d')
@@ -60,7 +60,8 @@ def add_date(YMD):
 
     return YMD
 
-def make_data_regular(list):
+def make_data_clean(list):
+    #정규식 표현을 이용한 데이터 정규화
     import re
     pattern =  r'[^a-zA-Z가-힣]'
     menu = []

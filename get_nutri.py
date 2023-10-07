@@ -1,12 +1,12 @@
 def get_food_data(food : str):
-    #음식 데이터 불러오기
+    #사전에 조사된 음식 데이터 불러오기
     import pandas as pd
 
     data = pd.read_csv("./csv_file/DB.csv", encoding="UTF-8")
 
     data_food_name = list(data["음 식 명"])
 
-    #데이터 토크나이저
+    #데이터 토크나이저(명사 단위로 자르기)
     import os
     os.environ['JAVA_HOME'] = r'C:\Program Files\Java\jdk-11\bin\server'
 
@@ -19,7 +19,7 @@ def get_food_data(food : str):
     high_score = 0
     high_data = 0
 
-    #데이터 유사도 확인하지
+    #자카드 유사도를 활용하여 유사도 비교하기
     from modules import jaccard_similarity
 
     for d in data_food_name:
@@ -32,13 +32,17 @@ def get_food_data(food : str):
             continue
 
     if high_data == 0:
+        #유사한 데이터가 없으면...빈 데이터 반환하기
         return {
             "Food" : food,
             "Nutri" : {}
         }
     else:
+        #유사한 데이터가 존재한다면...음식의 영양소를 반환하기
         food_data = data[data['음 식 명'] == high_data]
         col = list(food_data.columns)
+
+        #밥이라는 단어가 존재 여부를 체크
         if "밥" in food:
             old_weight = float(str(food_data[col[1]].values[0]).replace("-", "0"))
             rice_weight = 183
@@ -64,6 +68,7 @@ def get_food_data(food : str):
                 }
 
         else:
+            #밥이라는 단어가 포함되어있지 않으면 모두 반찬으로 간주
             old_weight = float(str(food_data[col[1]].values[0]))
             side_weight = 70
             return {
@@ -88,6 +93,7 @@ def get_food_data(food : str):
                 }
 
 def get_not_food_data(food : str):
+    #음료, 시리얼, 과일과 같은 반복되는 데이터라면 사전에 조사된 데이터를 그대로 반환
     import pandas as pd
     not_food = pd.read_csv("./csv_file/DB_not_food.csv")
 
@@ -119,6 +125,7 @@ def get_not_food_data(food : str):
     }
 
 def check_food(food : str):
+    #음료, 샐러드, 시리얼 등 반복되는 음식인지 판단
     import pandas as pd
     foods = list(pd.read_csv("./csv_file/DB_not_food.csv")["음 식 명"])
 
