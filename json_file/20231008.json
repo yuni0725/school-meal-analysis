@@ -1,0 +1,666 @@
+[
+	{
+		"조식": [
+			{
+				"Food": "잡곡밥",
+				"Nutri": {
+					"weight": 183,
+					"kcal": 267.18,
+					"carbo": 53.62,
+					"sugar": 0.55,
+					"fat": 1.56,
+					"protein": 9.7,
+					"Ca": 31.66,
+					"P": 202.3,
+					"Na": 4.84,
+					"K": 287.09,
+					"Mg": 64.62,
+					"Fe": 2.42,
+					"Zn": 1.7,
+					"cholesterol": 0.0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "쌀밥",
+				"Nutri": {
+					"weight": 183,
+					"kcal": 291.75,
+					"carbo": 64.23,
+					"sugar": 0.0,
+					"fat": 0.39,
+					"protein": 5.02,
+					"Ca": 3.14,
+					"P": 109.8,
+					"Na": 51.76,
+					"K": 127.84,
+					"Mg": 0.0,
+					"Fe": 0.31,
+					"Zn": 1.18,
+					"cholesterol": 0.0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "모듬빵잼",
+				"Nutri": {}
+			},
+			{
+				"Food": "미역국",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 7.02,
+					"carbo": 0.66,
+					"sugar": 0.0,
+					"fat": 0.61,
+					"protein": 0.38,
+					"Ca": 15.78,
+					"P": 6.15,
+					"Na": 213.86,
+					"K": 92.22,
+					"Mg": 0.0,
+					"Fe": 0.16,
+					"Zn": 0.06,
+					"cholesterol": 0.0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "해물떡찜",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 115.37,
+					"carbo": 14.91,
+					"sugar": 0.0,
+					"fat": 4.15,
+					"protein": 3.97,
+					"Ca": 13.56,
+					"P": 53.47,
+					"Na": 166.43,
+					"K": 97.19,
+					"Mg": 4.23,
+					"Fe": 0.72,
+					"Zn": 0.54,
+					"cholesterol": 63.42,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "감자채볶음",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 80.92,
+					"carbo": 11.52,
+					"sugar": 0.7,
+					"fat": 3.54,
+					"protein": 1.88,
+					"Ca": 14.88,
+					"P": 46.59,
+					"Na": 307.92,
+					"K": 356.45,
+					"Mg": 0.0,
+					"Fe": 0.55,
+					"Zn": 0.42,
+					"cholesterol": 0.0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "깍두기",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 25.19,
+					"carbo": 5.53,
+					"sugar": 0.07,
+					"fat": 0.32,
+					"protein": 1.4,
+					"Ca": 26.82,
+					"P": 21.46,
+					"Na": 474.43,
+					"K": 207.27,
+					"Mg": 0.0,
+					"Fe": 0.78,
+					"Zn": 0.2,
+					"cholesterol": 5.7,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "흑임자깨죽",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 44.25,
+					"carbo": 6.22,
+					"sugar": 0.0,
+					"fat": 1.66,
+					"protein": 1.18,
+					"Ca": 35.69,
+					"P": 22.96,
+					"Na": 106.07,
+					"K": 16.33,
+					"Mg": 0.0,
+					"Fe": 0.55,
+					"Zn": 0.44,
+					"cholesterol": 0.0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "누룽지",
+				"Nutri": {}
+			},
+			{
+				"Food": "찐옥수수",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 129.5,
+					"carbo": 23.94,
+					"sugar": 1.65,
+					"fat": 1.68,
+					"protein": 4.69,
+					"Ca": 3.42,
+					"P": 146.31,
+					"Na": 62.73,
+					"K": 213.92,
+					"Mg": 44.64,
+					"Fe": 47.64,
+					"Zn": 1.53,
+					"cholesterol": 0.0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "감귤쥬스",
+				"Nutri": {
+					"weight": 250.0,
+					"kcal": 120.0,
+					"carbo": 30.0,
+					"sugar": 28.0,
+					"fat": 0.0,
+					"protein": 0.0,
+					"Ca": 0,
+					"P": 0,
+					"Na": 30.0,
+					"K": 0,
+					"Mg": 0,
+					"Fe": 0,
+					"Zn": 0,
+					"cholesterol": 0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "우유",
+				"Nutri": {
+					"weight": 200.0,
+					"kcal": 135.0,
+					"carbo": 10.0,
+					"sugar": 10.0,
+					"fat": 8.0,
+					"protein": 6.0,
+					"Ca": 2,
+					"P": 2,
+					"Na": 100.0,
+					"K": 2,
+					"Mg": 2,
+					"Fe": 2,
+					"Zn": 2,
+					"cholesterol": 20,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "미니고기완자조림",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 70.3,
+					"carbo": 4.75,
+					"sugar": 1.4,
+					"fat": 1.61,
+					"protein": 9.5,
+					"Ca": 26.63,
+					"P": 97.48,
+					"Na": 378.29,
+					"K": 269.12,
+					"Mg": 0.0,
+					"Fe": 0.77,
+					"Zn": 0.36,
+					"cholesterol": 38.5,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "후르츠링",
+				"Nutri": {
+					"weight": 30.0,
+					"kcal": 119.0,
+					"carbo": 26.4,
+					"sugar": 11.0,
+					"fat": 0.9,
+					"protein": 1.2,
+					"Ca": 0,
+					"P": 0,
+					"Na": 150.0,
+					"K": 0,
+					"Mg": 0,
+					"Fe": 0,
+					"Zn": 0,
+					"cholesterol": 0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "초코크런치",
+				"Nutri": {
+					"weight": 92.0,
+					"kcal": 410.0,
+					"carbo": 68.0,
+					"sugar": 19.0,
+					"fat": 13.0,
+					"protein": 6.0,
+					"Ca": 0,
+					"P": 0,
+					"Na": 180.0,
+					"K": 0,
+					"Mg": 0,
+					"Fe": 0,
+					"Zn": 0,
+					"cholesterol": 0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "사과",
+				"Nutri": {
+					"weight": 230.0,
+					"kcal": 72.0,
+					"carbo": 19.06,
+					"sugar": 14.34,
+					"fat": 0.23,
+					"protein": 0.36,
+					"Ca": 0,
+					"P": 0,
+					"Na": 1.0,
+					"K": 0,
+					"Mg": 0,
+					"Fe": 0,
+					"Zn": 0,
+					"cholesterol": 0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "토마토",
+				"Nutri": {
+					"weight": 8.0,
+					"kcal": 3.0,
+					"carbo": 0.67,
+					"sugar": 0.45,
+					"fat": 0.03,
+					"protein": 0.15,
+					"Ca": 0,
+					"P": 0,
+					"Na": 1.0,
+					"K": 0,
+					"Mg": 0,
+					"Fe": 0,
+					"Zn": 0,
+					"cholesterol": 0,
+					"trans_fat": 0.0
+				}
+			}
+		]
+	},
+	{
+		"중식": [
+			{
+				"Food": "곤드레밥",
+				"Nutri": {
+					"weight": 183,
+					"kcal": 264.98,
+					"carbo": 56.49,
+					"sugar": 0.0,
+					"fat": 4.38,
+					"protein": 7.39,
+					"Ca": 15.85,
+					"P": 49.92,
+					"Na": 46.4,
+					"K": 426.61,
+					"Mg": 11.71,
+					"Fe": 0.98,
+					"Zn": 0.93,
+					"cholesterol": 0.0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "콩나물국",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 3.94,
+					"carbo": 0.22,
+					"sugar": 0.0,
+					"fat": 0.25,
+					"protein": 0.32,
+					"Ca": 5.86,
+					"P": 7.85,
+					"Na": 131.68,
+					"K": 14.49,
+					"Mg": 1.49,
+					"Fe": 0.08,
+					"Zn": 0.04,
+					"cholesterol": 1.3,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "부추겉절이",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 112.55,
+					"carbo": 14.94,
+					"sugar": 0.0,
+					"fat": 4.43,
+					"protein": 3.33,
+					"Ca": 14.36,
+					"P": 31.79,
+					"Na": 119.07,
+					"K": 189.31,
+					"Mg": 0.0,
+					"Fe": 1.15,
+					"Zn": 0.24,
+					"cholesterol": 3.33,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "왕교자만두",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 126.32,
+					"carbo": 12.66,
+					"sugar": 0.0,
+					"fat": 5.73,
+					"protein": 6.05,
+					"Ca": 94.87,
+					"P": 116.46,
+					"Na": 254.84,
+					"K": 140.73,
+					"Mg": 15.73,
+					"Fe": 0.23,
+					"Zn": 0.45,
+					"cholesterol": 8.37,
+					"trans_fat": 0.03
+				}
+			},
+			{
+				"Food": "포기김치",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 105.63,
+					"carbo": 20.1,
+					"sugar": 0.0,
+					"fat": 1.29,
+					"protein": 3.21,
+					"Ca": 22.14,
+					"P": 61.66,
+					"Na": 270.98,
+					"K": 115.88,
+					"Mg": 1.01,
+					"Fe": 0.41,
+					"Zn": 0.55,
+					"cholesterol": 27.89,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "게토레이",
+				"Nutri": {
+					"weight": 600.0,
+					"kcal": 160.0,
+					"carbo": 40.0,
+					"sugar": 39.0,
+					"fat": 0.0,
+					"protein": 0.0,
+					"Ca": 0,
+					"P": 0,
+					"Na": 170.0,
+					"K": 0,
+					"Mg": 0,
+					"Fe": 0,
+					"Zn": 0,
+					"cholesterol": 0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "샐러드",
+				"Nutri": {
+					"weight": 150.0,
+					"kcal": 184.0,
+					"carbo": 10.3,
+					"sugar": 4.12,
+					"fat": 15.68,
+					"protein": 1.45,
+					"Ca": 0,
+					"P": 0,
+					"Na": 274.0,
+					"K": 299,
+					"Mg": 0,
+					"Fe": 0,
+					"Zn": 0,
+					"cholesterol": 0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "갈치시즈닝구이",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 96.25,
+					"carbo": 0.42,
+					"sugar": 0.0,
+					"fat": 3.85,
+					"protein": 15.08,
+					"Ca": 8.35,
+					"P": 165.88,
+					"Na": 208.06,
+					"K": 292.71,
+					"Mg": 20.64,
+					"Fe": 324.36,
+					"Zn": 484.92,
+					"cholesterol": 61.57,
+					"trans_fat": 0.04
+				}
+			}
+		]
+	},
+	{
+		"석식": [
+			{
+				"Food": "보리밥",
+				"Nutri": {
+					"weight": 183,
+					"kcal": 289.23,
+					"carbo": 64.57,
+					"sugar": 0.0,
+					"fat": 0.13,
+					"protein": 5.08,
+					"Ca": 6.13,
+					"P": 62.95,
+					"Na": 4.12,
+					"K": 92.05,
+					"Mg": 0.0,
+					"Fe": 1.15,
+					"Zn": 1.29,
+					"cholesterol": 0.0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "쌀밥",
+				"Nutri": {
+					"weight": 183,
+					"kcal": 291.75,
+					"carbo": 64.23,
+					"sugar": 0.0,
+					"fat": 0.39,
+					"protein": 5.02,
+					"Ca": 3.14,
+					"P": 109.8,
+					"Na": 51.76,
+					"K": 127.84,
+					"Mg": 0.0,
+					"Fe": 0.31,
+					"Zn": 1.18,
+					"cholesterol": 0.0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "소고기무국",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 21.91,
+					"carbo": 1.42,
+					"sugar": 0.0,
+					"fat": 0.83,
+					"protein": 2.36,
+					"Ca": 10.61,
+					"P": 23.02,
+					"Na": 191.66,
+					"K": 116.0,
+					"Mg": 0.0,
+					"Fe": 0.7,
+					"Zn": 0.3,
+					"cholesterol": 5.0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "연두부",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 44.12,
+					"carbo": 2.27,
+					"sugar": 0.12,
+					"fat": 2.68,
+					"protein": 4.08,
+					"Ca": 51.23,
+					"P": 61.75,
+					"Na": 231.21,
+					"K": 112.99,
+					"Mg": 0.0,
+					"Fe": 0.85,
+					"Zn": 0.47,
+					"cholesterol": 0.0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "양념장",
+				"Nutri": {}
+			},
+			{
+				"Food": "안동찜닭",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 63.66,
+					"carbo": 6.51,
+					"sugar": 3.12,
+					"fat": 1.81,
+					"protein": 5.33,
+					"Ca": 24.2,
+					"P": 59.5,
+					"Na": 254.91,
+					"K": 145.31,
+					"Mg": 11.14,
+					"Fe": 0.0,
+					"Zn": 0.32,
+					"cholesterol": 21.02,
+					"trans_fat": 0.01
+				}
+			},
+			{
+				"Food": "청경채겉절이",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 45.72,
+					"carbo": 6.3,
+					"sugar": 0.7,
+					"fat": 2.19,
+					"protein": 1.98,
+					"Ca": 47.89,
+					"P": 51.37,
+					"Na": 333.31,
+					"K": 297.69,
+					"Mg": 0.0,
+					"Fe": 1.14,
+					"Zn": 0.41,
+					"cholesterol": 1.88,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "포기김치",
+				"Nutri": {
+					"weight": 70,
+					"kcal": 105.63,
+					"carbo": 20.1,
+					"sugar": 0.0,
+					"fat": 1.29,
+					"protein": 3.21,
+					"Ca": 22.14,
+					"P": 61.66,
+					"Na": 270.98,
+					"K": 115.88,
+					"Mg": 1.01,
+					"Fe": 0.41,
+					"Zn": 0.55,
+					"cholesterol": 27.89,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "샐러드",
+				"Nutri": {
+					"weight": 150.0,
+					"kcal": 184.0,
+					"carbo": 10.3,
+					"sugar": 4.12,
+					"fat": 15.68,
+					"protein": 1.45,
+					"Ca": 0,
+					"P": 0,
+					"Na": 274.0,
+					"K": 299,
+					"Mg": 0,
+					"Fe": 0,
+					"Zn": 0,
+					"cholesterol": 0,
+					"trans_fat": 0.0
+				}
+			},
+			{
+				"Food": "오미자쥬스",
+				"Nutri": {
+					"weight": 150.0,
+					"kcal": 65.0,
+					"carbo": 16.0,
+					"sugar": 16.0,
+					"fat": 0.0,
+					"protein": 0.0,
+					"Ca": 0,
+					"P": 0,
+					"Na": 25.0,
+					"K": 0,
+					"Mg": 0,
+					"Fe": 0,
+					"Zn": 0,
+					"cholesterol": 0,
+					"trans_fat": 0.0
+				}
+			}
+		]
+	}
+]

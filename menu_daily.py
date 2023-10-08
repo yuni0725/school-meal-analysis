@@ -69,3 +69,10 @@ def make_data_clean(list):
         s = re.sub(pattern=pattern, repl='', string=i)
         menu.append(s)
     return menu
+
+
+
+
+
+
+

@@ -1,4 +1,3 @@
-# This File gets menu from website and export by csv
 def get_data():
     import requests
     from bs4 import BeautifulSoup
@@ -38,12 +37,15 @@ def get_data():
     
             YMD = add_date(YMD)
             menu = list(set(menu))
+        
+        import datetime
 
-        if int(YMD) > 20230927:
+        date = datetime.datetime.now()
+        TODAY = date.strftime('%Y%m%d')
+
+        if int(YMD) > int(TODAY):
             running = False
 
-        print(len(menu))
-        print(f"{YMD}\n")
 
     write_csv(menu, "menu_new")
 
